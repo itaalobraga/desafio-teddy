@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   root-config:
     build:
@@ -7,6 +5,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - "9000:9000"
-    volumes:
-      - .:/app
-    restart: always
+    depends_on:
+      - angular-mfe
+
+  angular-mfe:
+    build:
+      context: ./angular-mfe
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
