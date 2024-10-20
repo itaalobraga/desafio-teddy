@@ -7,6 +7,7 @@ services:
       - "9000:9000"
     depends_on:
       - angular-mfe
+      - react-mfe
 
   angular-mfe:
     build:
@@ -14,3 +15,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8081:8081"
+
+  react-mfe:
+    build:
+      context: ./react-mfe
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"

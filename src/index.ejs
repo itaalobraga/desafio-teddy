@@ -16,7 +16,9 @@
   <script type="systemjs-importmap">
     {
       "imports": {
-        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js"
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
+        "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js"
       }
     }
   </script>
@@ -25,15 +27,16 @@
 
 
   <% if (isLocal) { %>
-  <script type="systemjs-importmap">
-    {
-      "imports": {
-        "@italobraga/root-config": "//localhost:9000/italobraga-root-config.js",
-        "angular-mfe": "//localhost:8081/main.js"
+    <script type="systemjs-importmap">
+      {       
+        "imports": {
+          "@italobraga/root-config": "//localhost:9000/italobraga-root-config.js",
+          "@italobraga/react-mfe": "//localhost:8080/italobraga-react-mfe.js",
+          "angular-mfe": "//localhost:8081/main.js"
+        }
       }
-    }
-  </script>
-  <% } %>
+    </script>
+    <% } %>
 
   
   <script src="https://cdn.jsdelivr.net/npm/zone.js@0.11.3/dist/zone.min.js"></script>
