@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+type User = {
+  username: string;
+  remember: boolean;
+  expiresAt: number;
+};
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,33 +28,36 @@ export class LoginComponent implements OnInit {
     const storedUser = localStorage.getItem('@teddy-challenge');
 
     if (storedUser) {
-      this.redirectToPanel();
+      const { remember, expiresAt } = JSON.parse(storedUser) as User;
+
+      if (remember || Date.now() < expiresAt) {
+        this.redirectToPanel();
+      }
     }
   }
 
   redirectToPanel(): void {
     const baseUrl = window.location.origin;
 
-    window.location.href = `${baseUrl}/panel`;
-  }
-
-  stayLoggedIn() {
-    const { remember, username } = this.loginForm.value;
-
-    if (remember) {
-      localStorage.setItem('@teddy-challenge', JSON.stringify({ username }));
-    }
+    window.location.href = `${baseUrl}/about`;
   }
 
   onSubmit() {
     const isValidForm = this.loginForm.valid;
 
     if (isValidForm) {
-      this.stayLoggedIn();
+      const { remember, username } = this.loginForm.value;
+
+      const expiresAt = Date.now() + 10000; // 10 segundos
+
+      localStorage.setItem(
+        '@teddy-challenge',
+        JSON.stringify({ username, remember, expiresAt })
+      );
 
       const baseUrl = window.location.origin;
 
-      window.location.href = `${baseUrl}/panel`;
+      window.location.href = `${baseUrl}/about`;
     }
   }
 }
