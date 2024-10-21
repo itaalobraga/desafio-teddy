@@ -1,4 +1,3 @@
-version: '3'
 services:
   root-config:
     build:
@@ -11,7 +10,7 @@ services:
       - react-mfe
     volumes:
       - .:/app
-      - node_modules:/app/node_modules 
+      - /app/node_modules
     restart: always
 
   angular-mfe:
@@ -22,7 +21,7 @@ services:
       - "8081:8081"
     volumes:
       - ./angular-mfe:/app
-      - node_modules_angular:/app/node_modules 
+      - /app/node_modules
     restart: always
 
   react-mfe:
@@ -33,10 +32,8 @@ services:
       - "8080:8080"
     volumes:
       - ./react-mfe:/app
-      - node_modules_react:/app/node_modules 
+      - /app/node_modules
     restart: always
 
 volumes:
   node_modules:
-  node_modules_angular:
-  node_modules_react:
