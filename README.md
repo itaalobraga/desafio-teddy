@@ -81,7 +81,12 @@ git clone https://github.com/itaalobraga/desafio-teddy.git
 cd teddy-desafio
 ```
 
-2. **Instale as dependências do React-MFE**
+2. **Através do docker compose, faça o build dos serviços/containers:**
+```bash
+docker compose up --build
+```
+
+3. **Instale as dependências do React-MFE**
 ```bash
 cd react-mfe
 pnpm i
