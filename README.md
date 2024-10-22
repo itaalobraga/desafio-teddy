@@ -112,7 +112,7 @@ pnpm run e2e
 - Paginação compartilhada através de "search params"
 - Testes e2e no microfrontend em React
 
-# 📝 Tarefas (TODO / TASKS)
+# 📝 Tarefas
 | Tarefa                                             | Estimativa de Tempo |
 |----------------------------------------------------|---------------------|
 | Iniciar as aplicações com Vite no Single-SPA       | 2 dias              |
