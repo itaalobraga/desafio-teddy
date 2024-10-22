@@ -1,5 +1,9 @@
 # 🐻 Desafio Teddy - Front-End Developer 
-Este projeto visa desenvolver uma aplicação que permita o cadastro de parceiros integrados, A estrutura será baseada em micro front-ends, o que possibilitará que diferentes equipes gerenciem suas partes de forma independente. 
+Este sistema foi desenvolvido para gerenciar os parceiros integrados nas aplicações, oferecendo uma forma simples de cadastrar, listar, atualizar e excluir esses parceiros. Além disso, também permite o gerenciamento de empresas externas com a mesma facilidade.
+
+A principal ideia do projeto é facilitar a manutenção e integração entre equipes através da utilização de micro front-ends, o que permite que cada funcionalidade seja desenvolvida de forma independente por times diferentes. Isso garante uma maior modularidade e facilita o crescimento e a evolução do sistema ao longo do tempo.
+
+A estrutura será baseada em micro front-ends, o que possibilitará que diferentes equipes gerenciem suas partes de forma independente. 
 
 # 🧑‍💻 Tecnologias
 - Single SPA;
@@ -62,6 +66,37 @@ docker compose up --build
 3. **Veja suas aplicações em:**
 http://localhost:9000
 
+# 🧪 Rodando Testes E2E
+
+**Observação:** Atualmente, apenas um micro front-end (React-MFE) possui testes E2E implementados.
+
+Certifique-se de que as seguintes ferramentas estejam instaladas:
+
+- Docker
+- Cypress
+
+1. **Clone o repositório:**
+```bash
+git clone https://github.com/itaalobraga/desafio-teddy.git
+cd teddy-desafio
+```
+
+2. **Instale as dependências do React-MFE**
+```bash
+cd react-mfe
+pnpm i
+```
+
+3. **Execute os testes E2E em modo headless:**
+```bash
+pnpm run e2e:headless
+```
+
+4. **Execute os testes E2E com a interface gráfica:**
+```bash
+pnpm run e2e
+```
+
 # ✅ O que foi feito
 - Configuração inicial do projeto com Angular e React utilizando Single SPA.
 - Estrutura de diretórios organizada para micro frontends.
@@ -70,12 +105,14 @@ http://localhost:9000
 - CRUD de Empresas e Parceiros
 - Implementado no login(mock) a funcionalidade de "Lembrar de mim"
 - Paginação compartilhada através de "search params"
+- Testes e2e no microfrontend em React
 
 # 📝 Tarefas (TODO / TASKS)
 | Tarefa                                             | Estimativa de Tempo |
 |----------------------------------------------------|---------------------|
 | Iniciar as aplicações com Vite no Single-SPA       | 2 dias              |
 | Implementar autenticação de usuário                | 2 dias              |
-| Adicionar testes unitários e testes e2e            | 3 dias              |
+| Adicionar testes unitários                         | 3 dias              |
+| Adicionar testes e2e no angular-mfe                | 1 dia               |
 | Melhorar a documentação do projeto                 | 1 dia               |
-| Deploy do projeto no GitHub Pages                  | 1 dia e meio        |
+| Deploy do projeto no GitHub Pages e/ou Vercel      | 1 dia e meio        |
