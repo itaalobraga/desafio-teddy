@@ -2,12 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { FiBriefcase, FiInfo, FiLogOut, FiUsers } from "react-icons/fi";
 import { useEffect, useRef, useState } from "react";
 import { USER_TOKEN_STORAGE_KEY } from "../constants";
-
-type User = {
-  username: string;
-  remember: boolean;
-  expiresAt: number;
-};
+import { User } from "../types/user";
 
 const menu = [
   {
@@ -31,6 +26,7 @@ export function Sidebar() {
   const [user, setUser] = useState<null | User>(null);
   const navigate = useNavigate();
   const hasMountedRef = useRef(false);
+  const currentYear = new Date().getFullYear();
 
   function handleGetLoggedUser() {
     const storedUser = localStorage.getItem(USER_TOKEN_STORAGE_KEY);
@@ -39,8 +35,6 @@ export function Sidebar() {
       const parsedUser = JSON.parse(storedUser) as User;
 
       setUser(parsedUser);
-
-      console.log(parsedUser);
 
       if (Date.now() > parsedUser.expiresAt && !parsedUser.remember) {
         navigate("/", { replace: true });
@@ -71,7 +65,7 @@ export function Sidebar() {
   useEffect(handleHasMounted, []);
 
   return (
-    <aside className="py-[2.5rem] px-[1.5rem] gap-[.75rem] bg-white flex flex-col w-[15.25rem]">
+    <aside className="py-[2.5rem] shrink-0 px-[1.5rem] gap-[.75rem] bg-white flex flex-col w-[15.25rem]">
       <div className="flex flex-col gap-[0.5rem] items-center mb-[1.5rem]">
         <img
           src="https://cdn.prod.website-files.com/5f778340ed26b167bd087abe/6344597814a5fd82d686b41b_teddy%20bear.png"
@@ -105,7 +99,9 @@ export function Sidebar() {
           Sair
         </button>
 
-        <small className="text-[#808080] self-center">Ítalo Braga | 2024</small>
+        <small className="text-[#808080] self-center">
+          Ítalo Braga | {currentYear}
+        </small>
       </div>
     </aside>
   );
