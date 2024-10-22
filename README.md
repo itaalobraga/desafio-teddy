@@ -5,6 +5,12 @@ A principal ideia do projeto é facilitar a manutenção e integração entre eq
 
 A estrutura será baseada em micro front-ends, o que possibilitará que diferentes equipes gerenciem suas partes de forma independente. 
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=vZV8XW7XES0" target="_blank">
+ <img src="http://img.youtube.com/vi/vZV8XW7XES0/mqdefault.jpg" alt="Watch the video" width="320" height="180" border="10" />
+</a>
+
+https://youtu.be/vZV8XW7XES0
+
 # 🧑‍💻 Tecnologias
 - Single SPA;
 - Angular@~15;
