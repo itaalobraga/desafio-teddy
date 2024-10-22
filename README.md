@@ -78,4 +78,3 @@ http://localhost:9000
 | Adicionar testes unitários e testes e2e            | 3 dias              |
 | Melhorar a documentação do projeto                 | 1 dia               |
 | Deploy do projeto no GitHub Pages                  | 1 dia e meio        |
-| Deploy do projeto no GitHub Pages                  | 1 dia e meio        |
