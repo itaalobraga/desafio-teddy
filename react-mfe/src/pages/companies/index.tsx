@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { PaginationResponse } from "../../types/pagination";
 import { pagination } from "../../helpers/pagination";
 import { COMPANIES_BASE_URL } from "../../apis/external-company";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
 
 type Company = {
   id: string;
@@ -59,19 +60,22 @@ export function Companies() {
         const company = info.row.original;
 
         return (
-          <div className="flex items-center gap-[0.5rem]">
+          <div className="flex items-center gap-[1rem]">
             <button
               type="button"
+              title="Editar"
               onClick={() => navigate(`/companies/${company.id}`)}
+              className="text-lg border border-neutral-500 p-[0.375rem] rounded bg-white hover:brightness-90"
             >
-              Editar
+              <FiEdit />
             </button>
             <button
               type="button"
-              className="text-red-500"
+              title="Remover"
+              className="text-lg text-red-600 border border-neutral-500 p-[0.375rem] rounded bg-white hover:brightness-90"
               onClick={() => handleDeleteCompany(company)}
             >
-              Remover
+              <FiTrash2 />
             </button>
           </div>
         );
@@ -93,13 +97,13 @@ export function Companies() {
     handleUpdateSearchParams(newPage);
   }
 
-  async function handleGetPartners(page: number) {
+  async function handleGetCompanies(page: number) {
     try {
       const { data } = await axios.get<Company[]>(COMPANIES_BASE_URL);
 
       setCompanies(pagination(data, { limit: 10, page }));
     } catch (error) {
-      alert("Failed to fetch companies");
+      alert("Ocorreu um erro ao carregar as empresas.");
     }
   }
 
@@ -118,13 +122,15 @@ export function Companies() {
         ...state,
         data: state.data.filter(({ id }) => id !== company.id),
       }));
+
+      alert("Empresa removida com sucesso!");
     } catch (error) {
-      alert("Failed to delete company");
+      alert("Ocorreu um erro ao tentar remover essa empresa.");
     }
   }
 
   useEffect(() => {
-    handleGetPartners(currentPage);
+    handleGetCompanies(currentPage);
   }, [currentPage]);
 
   useEffect(() => {

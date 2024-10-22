@@ -6,6 +6,7 @@ import { PARTNERS_BASE_URL } from "../../apis/partner";
 import { useNavigate } from "react-router-dom";
 import { PaginationResponse } from "../../types/pagination";
 import { pagination } from "../../helpers/pagination";
+import { FiTrash2, FiEdit } from "react-icons/fi";
 
 type Partner = {
   id: string;
@@ -63,23 +64,27 @@ export function Partners() {
     columnHelper.display({
       id: "actions",
       header: "Ações",
+
       cell: (info) => {
         const partner = info.row.original;
 
         return (
-          <div className="flex items-center gap-[0.5rem]">
+          <div className="flex items-center gap-[1rem]">
             <button
               type="button"
+              title="Editar"
               onClick={() => navigate(`/partners/${partner.id}`)}
+              className="text-lg border border-neutral-500 p-[0.375rem] rounded bg-white hover:brightness-90"
             >
-              Editar
+              <FiEdit />
             </button>
             <button
               type="button"
-              className="text-red-500"
+              title="Remover"
+              className="text-lg text-red-600 border border-neutral-500 p-[0.375rem] rounded bg-white hover:brightness-90"
               onClick={() => handleDeletePartner(partner)}
             >
-              Remover
+              <FiTrash2 />
             </button>
           </div>
         );
@@ -107,7 +112,7 @@ export function Partners() {
 
       setPartners(pagination(data, { limit: 10, page }));
     } catch (error) {
-      alert("Failed to fetch partners");
+      alert("Ocorreu um erro ao carregar os(as) parceiros(as).");
     }
   }
 
@@ -126,8 +131,10 @@ export function Partners() {
         ...state,
         data: state.data.filter(({ id }) => id !== partner.id),
       }));
+
+      alert("Parceiro(a) removido(a) com sucesso!");
     } catch (error) {
-      alert("Failed to delete partner");
+      alert("Ocorreu um erro ao tentar remover esse(a) parceiro(a).");
     }
   }
 

@@ -12,7 +12,8 @@
     "test": "cross-env BABEL_ENV=test jest",
     "watch-tests": "cross-env BABEL_ENV=test jest --watch",
     "coverage": "cross-env BABEL_ENV=test jest --coverage",
-    "build:types": "tsc"
+    "build:types": "tsc",
+    "cy:open": "cypress open"
   },
   "devDependencies": {
     "@babel/core": "^7.23.3",
@@ -24,6 +25,7 @@
     "@babel/runtime": "^7.23.3",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^12.0.0",
+    "@types/jest": "^27.5.2",
     "babel-jest": "^27.5.1",
     "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
@@ -48,12 +50,12 @@
   },
   "dependencies": {
     "@tanstack/react-table": "^8.20.5",
-    "@types/jest": "^27.0.1",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
     "@types/systemjs": "^6.1.1",
     "@types/webpack-env": "^1.16.2",
     "axios": "^1.7.7",
+    "cypress": "^13.15.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.53.1",

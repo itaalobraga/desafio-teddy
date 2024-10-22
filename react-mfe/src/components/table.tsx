@@ -39,7 +39,7 @@ export function Table<T>({
                   <th
                     key={header.id}
                     colSpan={header.colSpan}
-                    className="gap-[0.25rem] bg-white h-[2.5rem] px-[1.5rem] text-left text-[0.875rem] font-medium h-[3rem] border-r last:border-r-0 border-b"
+                    className="gap-[0.25rem] bg-white px-[1.5rem] text-left text-[0.875rem] font-medium h-[3rem] border-r last:border-r-0 border-b"
                   >
                     <div
                       {...{
@@ -61,14 +61,14 @@ export function Table<T>({
           ))}
         </thead>
         <tbody>
-          {table.getRowModel().rows.map((row) => {
+          {table.getRowModel().rows.map((row, index) => {
             return (
-              <tr key={row.id}>
+              <tr key={row.id} className="odd:bg-[#DFDFDF] even:bg-[#EEE]">
                 {row.getVisibleCells().map((cell) => {
                   return (
                     <td
                       key={cell.id}
-                      className="px-[1.5rem] h-[3.5rem] text-left text-[0.875rem] font-medium border-b group-last:border-b-0 last:border-r-0 py-0 whitespace-nowrap bg-[#D2D2D2] opacity-90"
+                      className="overflow-ellipsis overflow-clip px-[1.5rem] h-[3.5rem] text-left text-[0.875rem] font-medium border-b group-last:border-b-0 last:border-r-0 py-0 whitespace-nowrap opacity-90"
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
