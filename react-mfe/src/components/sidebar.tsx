@@ -65,7 +65,7 @@ export function Sidebar() {
   useEffect(handleHasMounted, []);
 
   return (
-    <aside className="py-[2.5rem] shrink-0 px-[1.5rem] gap-[.75rem] bg-white flex flex-col w-[15.25rem]">
+    <aside className="py-[2.5rem] fixed top-0 bottom-0 shrink-0 px-[1.5rem] gap-[.75rem] bg-white flex flex-col w-[15.25rem]">
       <div className="flex flex-col gap-[0.5rem] items-center mb-[1.5rem]">
         <img
           src="https://cdn.prod.website-files.com/5f778340ed26b167bd087abe/6344597814a5fd82d686b41b_teddy%20bear.png"

@@ -49,7 +49,7 @@ export function Companies() {
     }),
     columnHelper.accessor("lastSubmit", {
       header: "Última Submissão",
-      cell: (info) => new Date(info.getValue()).toLocaleDateString(),
+      cell: (info) => new Date(info.getValue().toString()).toLocaleDateString(),
     }),
 
     columnHelper.display({
@@ -60,8 +60,17 @@ export function Companies() {
 
         return (
           <div className="flex items-center gap-[0.5rem]">
-            <button type="button">Editar</button>
-            <button type="button" onClick={() => handleDeleteCompany(company)}>
+            <button
+              type="button"
+              onClick={() => navigate(`/companies/${company.id}`)}
+            >
+              Editar
+            </button>
+            <button
+              type="button"
+              className="text-red-500"
+              onClick={() => handleDeleteCompany(company)}
+            >
               Remover
             </button>
           </div>
@@ -96,7 +105,7 @@ export function Companies() {
 
   async function handleDeleteCompany(company: Company) {
     const confirmed = window.confirm(
-      `Tem certeza que deseja remover a empresa "${company.name}"?`
+      `Tem certeza que deseja remover "${company.name}"?`
     );
 
     if (!confirmed) {
@@ -130,6 +139,14 @@ export function Companies() {
   return (
     <>
       <h1 className="text-[2.25rem] font-[500] mb-[3.5rem]">Empresas</h1>
+
+      <button
+        type="button"
+        className="rounded w-full self-end max-w-[12.5rem] mb-[1.5rem] bg-[#575756] text-white transition-colors flex justify-center items-center h-[3rem] font-[600] disabled:bg-[#AFAFAE]"
+        onClick={() => navigate("/companies/create")}
+      >
+        Nova empresa
+      </button>
 
       <Table
         data={companies.data}

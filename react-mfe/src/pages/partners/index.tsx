@@ -68,8 +68,17 @@ export function Partners() {
 
         return (
           <div className="flex items-center gap-[0.5rem]">
-            <button type="button">Editar</button>
-            <button type="button" onClick={() => handleDeletePartner(partner)}>
+            <button
+              type="button"
+              onClick={() => navigate(`/partners/${partner.id}`)}
+            >
+              Editar
+            </button>
+            <button
+              type="button"
+              className="text-red-500"
+              onClick={() => handleDeletePartner(partner)}
+            >
               Remover
             </button>
           </div>
@@ -104,7 +113,7 @@ export function Partners() {
 
   async function handleDeletePartner(partner: Partner) {
     const confirmed = window.confirm(
-      `Tem certeza que deseja remover o(a) parceiro(a) "${partner.name}"?`
+      `Tem certeza que deseja remover "${partner.name}"?`
     );
 
     if (!confirmed) {
@@ -137,7 +146,15 @@ export function Partners() {
 
   return (
     <>
-      <h1 className="text-[2.25rem] font-[500] mb-[3.5rem]">Parceiros</h1>
+      <h1 className="text-[2.25rem] font-[500] mb-[1.5rem]">Parceiros</h1>
+
+      <button
+        type="button"
+        className="rounded w-full self-end max-w-[12.5rem] mb-[1.5rem] hover:opacity-50 bg-[#575756] text-white transition-colors flex justify-center items-center h-[3rem] font-[600] disabled:bg-[#AFAFAE]"
+        onClick={() => navigate("/partners/create")}
+      >
+        Novo(a) parceiro(a)
+      </button>
 
       <Table
         data={partners.data}

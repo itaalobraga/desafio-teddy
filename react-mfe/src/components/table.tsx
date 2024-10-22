@@ -4,6 +4,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 type Props<T> = {
   data: T[];
@@ -28,14 +29,18 @@ export function Table<T>({
   });
 
   return (
-    <div className="p-2">
-      <table className="w-full">
+    <div className="flex flex-col rounded overflow-hidden items-center">
+      <table className="w-full border-separate border-spacing-0 table-fixed">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <th key={header.id} colSpan={header.colSpan}>
+                  <th
+                    key={header.id}
+                    colSpan={header.colSpan}
+                    className="gap-[0.25rem] bg-white h-[2.5rem] px-[1.5rem] text-left text-[0.875rem] font-medium h-[3rem] border-r last:border-r-0 border-b"
+                  >
                     <div
                       {...{
                         className: header.column.getCanSort()
@@ -61,7 +66,10 @@ export function Table<T>({
               <tr key={row.id}>
                 {row.getVisibleCells().map((cell) => {
                   return (
-                    <td key={cell.id}>
+                    <td
+                      key={cell.id}
+                      className="px-[1.5rem] h-[3.5rem] text-left text-[0.875rem] font-medium border-b group-last:border-b-0 last:border-r-0 py-0 whitespace-nowrap bg-[#D2D2D2] opacity-90"
+                    >
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
@@ -74,26 +82,30 @@ export function Table<T>({
           })}
         </tbody>
       </table>
-      <div className="h-2" />
-      <div className="flex items-center gap-2">
+      <footer className="flex w-full px-[1.5rem] py-[0.75rem] h-[2.5rem] bg-white rounded-b" />
+
+      <div className="flex items-center gap-2 mt-[1.5rem]">
         <button
-          className="border rounded p-1"
+          type="button"
+          className="bg-white h-[2.5rem] w-[2.5rem] rounded flex items-center justify-center hover:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
           onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
           disabled={currentPage === 1}
         >
-          {"<"}
-        </button>
-        <button
-          className="border rounded p-1"
-          onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
-          disabled={currentPage === totalPages}
-        >
-          {">"}
+          <FiChevronLeft size={18} />
         </button>
 
         <span className="flex items-center gap-1">
           Página {currentPage} de {totalPages}
         </span>
+
+        <button
+          type="button"
+          className="bg-white h-[2.5rem] w-[2.5rem] rounded flex items-center justify-center hover:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
+          onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
+          disabled={currentPage === totalPages}
+        >
+          <FiChevronRight size={18} />
+        </button>
       </div>
     </div>
   );
