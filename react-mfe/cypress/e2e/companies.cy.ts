@@ -1,6 +1,7 @@
 describe("CRUD Companies", () => {
   beforeEach(() => {
     cy.intercept("GET", "/v1/external-companies").as("getCompanies");
+    cy.intercept("POST", "/v1/external-companies").as("createCompany");
   });
 
   it("should create a new company", () => {
@@ -16,6 +17,8 @@ describe("CRUD Companies", () => {
     cy.on("window:alert", (str) => {
       expect(str).to.equal("Empresa criada com sucesso!");
     });
+
+    cy.wait("@createCompany").its("response.statusCode").should("equal", 201);
   });
 
   it("should edit company", () => {
@@ -23,11 +26,14 @@ describe("CRUD Companies", () => {
 
     cy.wait("@getCompanies").its("response.statusCode").should("equal", 200);
 
-    cy.get('button[title*="Editar"]').click();
+    cy.get('button[title*="Editar"]').first().click();
 
     cy.get('input[name="name"]').clear().type("Company Edited");
     cy.get('input[name="companyName"]').clear().type("Company Name Edited");
-    cy.get('input[name="collaboratorsCount"]').clear().type("4");
+    cy.get('input[name="collaboratorsCount"]')
+      .clear()
+      .invoke("removeAttr", "disabled")
+      .type("4");
     cy.get('input[type="radio"][value="false"]').check();
 
     cy.get('button[type="submit"]').click();
@@ -42,7 +48,7 @@ describe("CRUD Companies", () => {
 
     cy.wait("@getCompanies").its("response.statusCode").should("equal", 200);
 
-    cy.get('button[title*="Remover"]').click();
+    cy.get('button[title*="Remover"]').first().click();
 
     cy.on("window:confirm", () => true);
 

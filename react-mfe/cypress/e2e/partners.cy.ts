@@ -1,6 +1,7 @@
 describe("CRUD Partners", () => {
   beforeEach(() => {
     cy.intercept("GET", "/v1/test/partners").as("getPartners");
+    cy.intercept("POST", "/v1/test/partners").as("createPartner");
   });
 
   it("should create a new partner", () => {
@@ -18,6 +19,8 @@ describe("CRUD Partners", () => {
     cy.on("window:alert", (str) => {
       expect(str).to.equal("Parceiro(a) criado(a) com sucesso!");
     });
+
+    cy.wait("@createPartner").its("response.statusCode").should("equal", 201);
   });
 
   it("should edit partner", () => {

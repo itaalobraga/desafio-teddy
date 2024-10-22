@@ -13,7 +13,8 @@
     "watch-tests": "cross-env BABEL_ENV=test jest --watch",
     "coverage": "cross-env BABEL_ENV=test jest --coverage",
     "build:types": "tsc",
-    "cy:open": "cypress open"
+    "e2e": "cypress open --e2e --browser chrome",
+    "e2e:headless": "cypress run --e2e --browser chrome"
   },
   "devDependencies": {
     "@babel/core": "^7.23.3",
