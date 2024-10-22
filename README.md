@@ -24,7 +24,7 @@ Certifique-se de que as seguintes ferramentas estejam instaladas:
 1. **Clone o repositório:**
 ```bash
 git clone https://github.com/itaalobraga/desafio-teddy.git
-cd teddy-desafio
+cd desafio-teddy
 ```
 
 2. **Root config**
@@ -55,7 +55,7 @@ Certifique-se de que as seguintes ferramentas estejam instaladas:
 1. **Clone o repositório:**
 ```bash
 git clone https://github.com/itaalobraga/desafio-teddy.git
-cd teddy-desafio
+cd desafio-teddy
 ```
 
 2. **Através do docker compose, faça o build dos serviços/containers:**
@@ -78,7 +78,7 @@ Certifique-se de que as seguintes ferramentas estejam instaladas:
 1. **Clone o repositório:**
 ```bash
 git clone https://github.com/itaalobraga/desafio-teddy.git
-cd teddy-desafio
+cd desafio-teddy
 ```
 
 2. **Através do docker compose, faça o build dos serviços/containers:**
