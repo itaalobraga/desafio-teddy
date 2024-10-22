@@ -1,6 +1,7 @@
 # 🐻 Desafio Teddy - Front-End Developer 
 Este projeto visa desenvolver uma aplicação que permita o cadastro de parceiros integrados, A estrutura será baseada em micro front-ends, o que possibilitará que diferentes equipes gerenciem suas partes de forma independente. 
-# 🧑‍💻 Tecnologias utilizadas
+
+# 🧑‍💻 Tecnologias
 - Single SPA;
 - Angular@~15;
 - React;
@@ -18,7 +19,7 @@ Certifique-se de que as seguintes ferramentas estejam instaladas:
   
 1. **Clone o repositório:**
 ```bash
-git clone git@github.com:barretoga/teddy-desafio.git
+git clone https://github.com/itaalobraga/desafio-teddy.git
 cd teddy-desafio
 ```
 
@@ -49,7 +50,7 @@ Certifique-se de que as seguintes ferramentas estejam instaladas:
 
 1. **Clone o repositório:**
 ```bash
-git clone git@github.com:barretoga/teddy-desafio.git
+git clone https://github.com/itaalobraga/desafio-teddy.git
 cd teddy-desafio
 ```
 
