@@ -1,7 +1,7 @@
 export function About() {
   return (
     <>
-      <h1 className="text-[2.25rem] font-[500] mb-[3.5rem]">Sobre o Sistema</h1>
+      <h1 className="text-[2.25rem] font-[500] mb-4">Sobre o Sistema</h1>
       <p className="text-lg mb-4">
         O sistema foi criado para cadastrar e gerenciar parceiros integrados em
         nossas aplicações, com detalhes sobre onde são utilizados e quais
@@ -12,7 +12,7 @@ export function About() {
         diferentes equipes gerenciem funcionalidades de forma independente.
       </p>
 
-      <h2 className="text-[1.75rem] font-[500] mb-3">Tecnologias Utilizadas</h2>
+      <h2 className="text-[1.75rem] font-[500] mb-3">Tecnologias</h2>
       <ul className="list-disc list-inside mb-4">
         <li>Single SPA</li>
         <li>Angular</li>
@@ -25,7 +25,7 @@ export function About() {
       <p className="text-lg">
         Para mais detalhes sobre o projeto, acesse o{" "}
         <a
-          href="https://github.com/seu-repositorio/readme"
+          href="https://github.com/itaalobraga/desafio-teddy"
           className="text-blue-500 underline"
           target="_blank"
         >
